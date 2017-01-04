@@ -20,4 +20,25 @@ class GuessTest < Minitest::Test
     guess = Guess.new("Juneau", card)
     assert_equal "Correct!", guess.feedback
   end
+
+  def test_can_do_with_different_cards
+    card = Card.new("Which planet is closest to the sun?", "Mercury")
+    guess = Guess.new("Saturn", card)
+
+    assert_equal "Saturn", guess.response
+  end
+
+  def test_can_do_with_different_cards_correct_or_not
+    card = Card.new("Which planet is closest to the sun?", "Mercury")
+    guess = Guess.new("Saturn", card)
+
+    assert_equal false, guess.correct?
+  end
+
+  def test_can_do_with_different_cards
+    card = Card.new("Which planet is closest to the sun?", "Mercury")
+    guess = Guess.new("Saturn", card)
+
+    assert_equal "Incorrect!", guess.feedback
+  end
 end

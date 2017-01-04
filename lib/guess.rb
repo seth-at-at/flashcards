@@ -13,7 +13,7 @@ class Guess
 
   def feedback
     return "Correct!" if correct? == true
-    return "False!" if correct? == false
+    return "Incorrect!" if correct? == false
   end
 
 end
