@@ -1,7 +1,6 @@
 require'./lib/card'
 require'./lib/round'
 require'./lib/deck'
-# require'./lib/turings_cards.txt'
 
 card_1 = Card.new("Question: What is 5 + 5?", "10") 
 card_2 = Card.new("Question: What is Rachel's favorite animal?", "redpanda") 
