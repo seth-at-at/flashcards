@@ -31,36 +31,17 @@ class Round
     (@number_correct.to_f/guesses.count) * 100
   end
 
-  def start
+  def start 
     puts Messages.new.welcome
-    puts Messages.new.card_1_m
-    puts current_card.question
-    user_guess = gets.chomp
-    current_guess = Guess.new(user_guess, current_card)
-    record_guess(user_guess)
-    puts current_guess.feedback
 
-    puts Messages.new.card_2_m
-    puts current_card.question
-    user_guess = gets.chomp
-    current_guess = Guess.new(user_guess, current_card)
-    record_guess(user_guess)
-    puts current_guess.feedback
-
-    puts Messages.new.card_3_m
-    puts current_card.question
-    user_guess = gets.chomp
-    current_guess = Guess.new(user_guess, current_card)
-    record_guess(user_guess)
-    puts current_guess.feedback
-
-    puts Messages.new.card_4_m
-    puts current_card.question
-    user_guess = gets.chomp
-    current_guess = Guess.new(user_guess, current_card)
-    record_guess(user_guess)
-    puts current_guess.feedback
-
+    until current_card == nil
+      puts "This is card number #{guesses.count + 1} out of #{deck.count}."
+      puts current_card.question
+      user_guess = gets.chomp.downcase
+      current_guess = Guess.new(user_guess, current_card)
+      record_guess(user_guess)
+      puts current_guess.feedback
+    end
     puts Messages.new.game_over
     puts "You got #{number_correct} correct guesses out of #{deck.count} for a score of #{percent_correct}%."
   end
