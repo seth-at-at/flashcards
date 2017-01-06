@@ -1,12 +1,10 @@
 require'./lib/card'
 require'./lib/round'
 require'./lib/deck'
+require'./lib/card_generator'
 
-card_1 = Card.new("Question: What is 5 + 5?", "10") 
-card_2 = Card.new("Question: What is Rachel's favorite animal?", "red panda") 
-card_3 = Card.new("Question: What is Mike's middle name?", "nobody knows") 
-card_4 = Card.new("Question: What cardboard cutout lives at Turing?", "justin bieber") 
-deck = Deck.new([card_1, card_2, card_3, card_4])
+cards = CardGenerator.new("./lib/turings_cards.txt").cards
+deck = Deck.new(cards)
 round = Round.new(deck)
 
 round.start
