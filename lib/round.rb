@@ -13,8 +13,8 @@ class Round
   end
 
   def current_card
-    x = guesses.count
-    deck.cards[x]
+    num = guesses.count
+    deck.cards[num]
   end
 
   def record_guess(response)
@@ -33,8 +33,35 @@ class Round
 
   def start
     puts Messages.new.welcome
+    puts Messages.new.card_1_m
     puts current_card.question
-    gets.chomp.downcase
-    puts guess.feedback 
+    user_guess = gets.chomp
+    current_guess = Guess.new(user_guess, current_card)
+    record_guess(user_guess)
+    puts current_guess.feedback
+
+    puts Messages.new.card_2_m
+    puts current_card.question
+    user_guess = gets.chomp
+    current_guess = Guess.new(user_guess, current_card)
+    record_guess(user_guess)
+    puts current_guess.feedback
+
+    puts Messages.new.card_3_m
+    puts current_card.question
+    user_guess = gets.chomp
+    current_guess = Guess.new(user_guess, current_card)
+    record_guess(user_guess)
+    puts current_guess.feedback
+
+    puts Messages.new.card_4_m
+    puts current_card.question
+    user_guess = gets.chomp
+    current_guess = Guess.new(user_guess, current_card)
+    record_guess(user_guess)
+    puts current_guess.feedback
+
+    puts Messages.new.game_over
+    puts "You got #{number_correct} correct guesses out of #{deck.count} for a score of #{percent_correct}%."
   end
 end
